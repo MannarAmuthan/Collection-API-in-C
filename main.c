@@ -10,22 +10,10 @@ struct amuthan{
 	int roll;
 	char name[10];
 };
-int compare(void* one,void* two){
-	struct amuthan *op1,*op2;
-	op1=(struct amuthan*) one;
-	op2=(struct amuthan*) two;
 
-  if(op1->roll==op2->roll){
-      return 0;
-  }
-  if(op1->roll>op2->roll){
-      return 1;
-  }
-  if(op1->roll<op2->roll){
-      return -1;
-  }
-}
 void main(){
+	
+	//creation of our own data types/ objects
 	struct amuthan a,b,c,d,e,f;
 	strcpy(a.name,"amuthan");
 	strcpy(b.name,"siva");
@@ -35,6 +23,7 @@ void main(){
 	strcpy(f.name,"kkk");
 	a.roll=10;b.roll=20;c.roll=30;d.roll=40;e.roll=50;f.roll=60;
 
+	//Linked list - demo
 
 	LinkedList *list;
 	list=linkedlist();
@@ -55,8 +44,8 @@ void main(){
     	printf("%s ",((struct amuthan*)getNext(i))->name);
     }
 
+        //stack -demo
 
-/*
 	Stack *st;
 	st=stack();
 	push(st,&a);
@@ -73,7 +62,7 @@ void main(){
 
 
 
-	/*
+	// arraylist-demo
  ArrayList* al;
  al=arrayList();
 
@@ -107,7 +96,7 @@ void main(){
  */
 
 
-/*
+ //hashmap -demo
 HashMap* map;
 map=hashmap();
 put(map,"am",&a);
@@ -119,9 +108,7 @@ void* data;
 data=getValue(map,"sarkar");
 printf(" data is %d",((struct amuthan*)data)->roll);
 */
-Comparator* comp;
-comp=getComparator(compare,i);
-//sortDesc(comp);
+
 
 
 
