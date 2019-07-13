@@ -10,6 +10,7 @@
 
 #include "LinkedList.h"
 #include "DynamicList.h"
+#include "PriorityQueue.h"
 
 
 typedef struct iter_{
@@ -41,6 +42,17 @@ Iterator* ALgetIterator(ArrayList* list){
 	i->index=0;
 	i->type=1;
 	i->alist=list;
+	return i;
+
+}
+Iterator* PQgetIterator(PriorityQueue* list){
+	Iterator* i;
+	i=(Iterator*) malloc(sizeof(Iterator));
+	i->head=list->list->head;
+	i->ptr=list->list->head;
+	i->index=0;
+	i->type=0;
+	i->llist=list->list;
 	return i;
 
 }
