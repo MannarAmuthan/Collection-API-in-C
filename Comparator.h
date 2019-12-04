@@ -17,6 +17,13 @@ typedef struct comp_{
 	int type;
 }Comparator;
 
+
+void sortDesc(Comparator* c);
+void sortAsc(Comparator* c);
+void bubbleSort(Comparator* comp,int mode);
+void insertionSort(Comparator* comp,int mode);
+void swap(Node *a, Node *b);
+
 Comparator* getComparatorLL(int (*compareTo)(void* op1,void* op2), LinkedList* list){
 Comparator* comp;
 comp=(Comparator*) malloc(sizeof(Comparator));
@@ -52,7 +59,7 @@ void sortAsc(Comparator* c){
 }
 void bubbleSort(Comparator* comp,int mode)
 {
-    int swapped, i;
+    int swapped;
     Node *ptr1;
     Node *lptr = NULL;
     Node *start;
