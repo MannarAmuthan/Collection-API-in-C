@@ -23,13 +23,13 @@ ArrayList* arrayList(){
     list->size=0;
     list->pointer=0;
     list->capacity=10;
+    return list;
 
 }
 
 int addAL(ArrayList* list, void* data){
 	Node* node;
 	node=init_node(data);
-	int pointer=list->pointer;
 	if((list->size)>=10){
 		list->index=(Node*)realloc(list->index,((list->capacity)*sizeof(Node))*2);
 		list->capacity=(list->capacity)*2;
@@ -44,7 +44,7 @@ void* getAL(ArrayList* list,int n){
 }
 int removeAL(ArrayList* list,int n){
 	if(n>-1&&n<list->size){
-	for(int i=n;i<list->capacity-1;i++){
+	for(int i=n;i<list->size-1;i++){
 		list->index[i]=list->index[i+1];
 	}
 	list->size=(list->size)-1;
@@ -64,7 +64,7 @@ int insertAtAL(ArrayList* list,void* data,int n){
 			list->capacity=(list->capacity)*2;
 	  }
 	  if(n<list->capacity&&n>-1){
-		  for(int i=list->size-1;i>n;i--){
+		  for(int i=list->size-1;i>=n;i--){
 			  list->index[i+1]=list->index[i];
 		  }
 		  list->index[n]=*node;
