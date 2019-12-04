@@ -105,6 +105,7 @@ void* LLgetLast(LinkedList* list){
 		}
 		temp=temp->next;
 	}
+	return NULL;
 }
 Node* LLget(LinkedList* list,int pos){
 	Node* temp;
@@ -112,13 +113,13 @@ Node* LLget(LinkedList* list,int pos){
     int i=0;
 			while(temp!=NULL){
 				if(i==pos){
-				printf("returns %d \n",*(int*)(temp->data));
+				//printf("returns %d \n",*(int*)(temp->data));
 				return temp;
 				}
 				temp=temp->next;
 				i++;
 			}
-
+    return NULL;
 }
 
 Node* LLremove(LinkedList* list,int pos){
@@ -153,6 +154,7 @@ Node* LLremove(LinkedList* list,int pos){
 			}
 			list->size=(list->size)-1;
     }
+    return NULL;
 }
 
 int LLindexOf(LinkedList* list,Node* n){
@@ -161,7 +163,7 @@ int LLindexOf(LinkedList* list,Node* n){
 	int i=0;
 	while(1){
 		if(curr==n){
-			return 0;
+			return i;
 		}
 		curr=curr->next;
 		if(curr==NULL){
@@ -169,6 +171,7 @@ int LLindexOf(LinkedList* list,Node* n){
 		}
 		i++;
 	}
+	return i;
 }
 
 
@@ -177,7 +180,6 @@ Node* init_node(void* data){
     Node* n;
     n=(Node*)malloc(sizeof(Node));
     n->data=(void*)(data);
-    n->index;
     n->next=NULL;
     n->prev=NULL;
     return n;
@@ -195,4 +197,4 @@ void LLaddNode(LinkedList* list,Node* node){
     }
     list->size=(list->size)+1;
 }
-#endif /* DYNAMICARRAY_H_ */
+#endif 
