@@ -59,7 +59,6 @@ int insertAtAL(ArrayList* list,void* data,int n){
 	Node* node;
 	node=init_node(data);
 	  if(list->size>=list->capacity-1){
-		  printf("here.... \n");
 			list->index=(Node*)realloc(list->index,((list->capacity)*sizeof(Node))*2);
 			list->capacity=(list->capacity)*2;
 	  }

@@ -9,21 +9,24 @@
 #define STACK_H_
 
 #include"LinkedList.h"
+
 typedef struct _stack{
-	 Node* top;
-	 int size;
- } Stack;
+        Node* top;
+        int size;
+} Stack;
 
 Stack* stack(){
-Stack* st;
-st=(Stack*)malloc(sizeof(Stack));
-st->top=NULL;
-st->size=0;
+       Stack* st;
+       st=(Stack*)malloc(sizeof(Stack));
+       st->top=NULL;
+       st->size=0;
+       return st;
 }
 
 int push(Stack* stack,void* data){
 	Node* node;
 	node=init_node(data);
+
 	if(stack->top==NULL){
 		stack->top=node;
 		stack->size=(stack->size)+1;
@@ -40,15 +43,17 @@ void* peek(Stack* st){
 	Node* top;
 	top=st->top;
 	return top->data;
-
 }
+
 void* pop(Stack* st){
 	Node *top;
 	top=st->top;
+	if(top==NULL){
+	return NULL;
+	}
 	st->top=st->top->prev;
     st->size=(st->size)-1;
 	return top->data;
-
 }
 
 #endif /* STACK_H_ */

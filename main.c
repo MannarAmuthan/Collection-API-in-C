@@ -1,9 +1,9 @@
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
-#include"LinkedList.h"
+#include "LinkedList.h"
 #include "Iterable.h"
-#include"Stack.h"
+#include "Stack.h"
 #include "DynamicList.h"
 #include "HashMap.h"
 #include "Comparator.h"
@@ -46,7 +46,8 @@ int main(){
 	a.roll=10;b.roll=20;c.roll=30;d.roll=40;e.roll=50;f.roll=60;
 
 //demo of using Linked List
-/*
+ /*
+    printf("\nsample usages of Linkedlist \n");
 	LinkedList *list;
 	list=linkedlist();
 	LLadd(list,&a);
@@ -58,18 +59,19 @@ int main(){
 	insertAfter(&a,list,&f);
 	insertFirst(list,&c);
     LLremove(list,6);
+    LLremove(list,3);
     Iterator* i;
     i=LLgetIterator(list);
 
 
     while(hasNext(i)){
-    	printf("%s ",((struct Student*)getNext(i))->name);
+    	printf("%s \n",((struct Student*)getNext(i))->name);
     }
 */
 
 //demo of using Stack
-	
-/*
+
+    printf("\nsample usages of stack \n");
 	Stack *st;
 	st=stack();
 	push(st,&a);
@@ -84,11 +86,11 @@ int main(){
 	data=(struct Student*)pop(st);
     printf("%s %d \n",data->name,st->size);
 
-*/
+
 	
 //demo of using ArrayList and Comparator for sorting
-	
 /*
+ printf("\nsample usages of Arraylist and sorting using comparator\n");
  ArrayList* al;
  al=arrayList();
 
@@ -132,26 +134,29 @@ int main(){
  while(hasNext(i1)){
  	printf("%s ",((struct Student*)getNext(i1))->name);
  }
-*/
+ */
 
 //demo of using HashMap
-
 /*
+printf("\nsample usage of hashmap\n");
 HashMap* map;
 map=hashmap();
 put(map,"am",&a);
 put(map,"aa",&c);
 put(map,"sm",&b);
-put(map,"sarkar",&e);
+put(map,"keyy",&e);
 removeKey(map,"aa");
-void* data;
-data=getValue(map,"sarkar");
-printf(" data is %d",((struct Student*)data)->roll);
+void *data,*data2;
+data=getValue(map,"keyy");
+data2=getValue(map,"sm");
+printf("data is %d\n",((struct Student*)data)->roll);
+printf("data is %d\n",((struct Student*)data2)->roll);
 */
 
 
 //demo of using Linked List and Comparator for Sorting	
 /*
+printf("\nsample usages of Linkedlist and sorting using comparator\n");
 LinkedList *list1;
 list1=linkedlist();
 LLadd(list1,&b);
@@ -175,6 +180,7 @@ while(hasNext(i1)){
 //demo of using Priority Queue
 
 /*
+    printf("\nsample usages of priorityQueue\n");
 	PriorityQueue *q;
 	q=priorityQueue(compare);
 	enqueue(q,&d);
@@ -188,11 +194,11 @@ while(hasNext(i1)){
     printf("got.. %s \n",got->name);
 	Iterator* i;
 	i=PQgetIterator(q);
-	printf("after sorting.. \n");
+	printf("state of queue.. \n");
 	while(hasNext(i)){
-		printf("%s ",((struct Student*)getNext(i))->name);
+		printf("%s \n",((struct Student*)getNext(i))->name);
 	}
-*/
+/*
 
 //demo of using ArrayList again
 	
@@ -237,7 +243,9 @@ while(hasNext(i1)){
 */
 	
 //demo of using Sets	
-/*	
+
+/*
+    printf("\nsample usages of set\n");
 	Set *s,*anotherSet;
 	s=set(compare);
 	addToSet(s,&b);
@@ -259,7 +267,6 @@ while(hasNext(i1)){
 	while(hasNext(i1)){
 		printf("%s ",((struct Student*)getNext(i1))->name);
 	}
-
 */
 	
 return 1;
