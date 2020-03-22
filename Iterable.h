@@ -14,14 +14,15 @@
 
 
 typedef struct iter_{
-Node* head;
-Node* ptr;
-int index;
-int type;
-ArrayList* alist;
-LinkedList* llist;
-int listSize;
-}Iterator;
+    Node* head;
+    Node* ptr;
+    int index;
+    int type;
+    ArrayList* alist;
+    LinkedList* llist;
+    int listSize;
+}
+Iterator;
 
 Iterator* LLgetIterator(LinkedList* list){
 	Iterator* i;

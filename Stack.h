@@ -11,9 +11,10 @@
 #include"LinkedList.h"
 
 typedef struct _stack{
-        Node* top;
-        int size;
-} Stack;
+      Node* top;
+      int size;
+}
+Stack;
 
 Stack* stack(){
        Stack* st;

@@ -15,8 +15,8 @@
 typedef struct set{
 	LinkedList* list;
 	Comparator *comparator;
-
-}Set;
+}
+Set;
 
 int IsContains(Set* s, void* data);
 

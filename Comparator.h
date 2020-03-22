@@ -25,20 +25,20 @@ void insertionSort(Comparator* comp,int mode);
 void swap(Node *a, Node *b);
 
 Comparator* getComparatorLL(int (*compareTo)(void* op1,void* op2), LinkedList* list){
-Comparator* comp;
-comp=(Comparator*) malloc(sizeof(Comparator));
-comp->compareTo=compareTo;
-comp->llist=list;
-comp->type=0;
-return comp;
+    Comparator* comp;
+    comp=(Comparator*) malloc(sizeof(Comparator));
+    comp->compareTo=compareTo;
+    comp->llist=list;
+    comp->type=0;
+    return comp;
 }
 Comparator* getComparatorAL(int (*compareTo)(void* op1,void* op2), ArrayList* list){
-Comparator* comp;
-comp=(Comparator*) malloc(sizeof(Comparator));
-comp->compareTo=compareTo;
-comp->alist=list;
-comp->type=1;
-return comp;
+    Comparator* comp;
+    comp=(Comparator*) malloc(sizeof(Comparator));
+    comp->compareTo=compareTo;
+    comp->alist=list;
+    comp->type=1;
+    return comp;
 }
 
 void sortDesc(Comparator* c){
@@ -96,7 +96,6 @@ void insertionSort(Comparator* comp,int mode){
     for(int i=0;i<size-1;i++){
      for(int j=i+1;j<size;j++){
     	 if(comp->compareTo(list->index+i,list->index+j)==mode){
-    		// printf("\n swapp... %d %d",*(int*)list->index[i].data,*(int*)list->index[j].data);
     		 Node temp;
     		 temp=list->index[i];
     		 list->index[i]=list->index[j];
@@ -109,9 +108,9 @@ void insertionSort(Comparator* comp,int mode){
 /* function to swap data of two nodes a and b*/
 void swap(Node *a, Node *b)
 {
- void* temp;
- temp=a->data;
- a->data=b->data;
- b->data=temp;
+    void* temp;
+    temp=a->data;
+    a->data=b->data;
+    b->data=temp;
 }
 #endif /* COMPARATOR_H_ */

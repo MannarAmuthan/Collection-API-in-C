@@ -20,7 +20,8 @@ typedef struct Linkedlist{
 	int size;
 	Node* head;
 	Node* tail;
-}LinkedList;
+}
+LinkedList;
 
 
 LinkedList* linkedlist();

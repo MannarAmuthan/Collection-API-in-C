@@ -12,10 +12,11 @@
 #include "LinkedList.h"
 
 typedef struct pri_que{
-LinkedList* list;
-Comparator* comp;
-int size;
-}PriorityQueue;
+    LinkedList* list;
+    Comparator* comp;
+    int size;
+}
+PriorityQueue;
 
 PriorityQueue* priorityQueue(int (*compareTo)(void* op1,void* op2)){
 	PriorityQueue *q;
