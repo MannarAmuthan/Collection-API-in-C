@@ -1,40 +1,18 @@
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
+#include "Student.h"
 #include "LinkedList.h"
-#include "Iterable.h"
-#include "Stack.h"
-#include "DynamicList.h"
-#include "HashMap.h"
-#include "Comparator.h"
-#include "PriorityQueue.h"
-#include "Set.h"
-
-struct Student{
-	int roll;
-	char name[10];
-};
-
-//This will be used as comparator
-int compare(void* one,void* two){
-	struct Student *op1,*op2;
-	op1=(struct Student*) one;
-	op2=(struct Student*) two;
-
-    if(op1->roll==op2->roll){
-      return 0;
-    }
-
-    if(op1->roll>op2->roll){
-      return 1;
-    }
-
-    if(op1->roll<op2->roll){
-      return -1;
-    }
-    return -1;
-}
-
+#include "ArrayList.h"
+//#include "Iterable.h"
+//#include "Stack.h"
+//#include "DynamicList.h"
+//#include "HashMap.h"
+//#include "Comparator.h"
+//#include "PriorityQueue.h"
+//#include "Set.h"
+#include "TestLinkedList.c"
+#include "TestArrayList.c"
 
 int main(){
 
@@ -47,10 +25,11 @@ int main(){
 	strcpy(f.name,"student 6");
 	a.roll=10;b.roll=20;c.roll=30;d.roll=40;e.roll=50;f.roll=60;
 
-
+    testLinkedList();
+    testArrayList();
 
 //Demo of using Linked List
- /*
+/*
     printf("\nSample usages of Linkedlist \n");
 	LinkedList *list;
 	list=linkedlist();
@@ -71,13 +50,14 @@ int main(){
     while(hasNext(i)){
     	printf("%s \n",((struct Student*)getNext(i))->name);
     }
-*/
 
+*/
 
 
 
 //Demo of using Stack
 
+/*
     printf("\nSample usages of Stack \n");
 	Stack *st;
 	st=stack();
@@ -92,7 +72,7 @@ int main(){
 	pop(st);
 	data=(struct Student*)pop(st);
     printf("%s %d \n",data->name,st->size);
-
+*/
 
 
 
@@ -127,23 +107,23 @@ int main(){
 
 
     while(hasNext(i)){
- 	  printf("%s ",((struct Student*)getNext(i))->name);
-   }
+ 	  printf("%s \n",((struct Student*)getNext(i))->name);
+    }
 
-   Comparator* comp;
-   comp=getComparatorAL(compare,al);
-   sortAsc(comp);
-
-
-   printf("after sorting.. \n");
-   Iterator* i1;
-   i1=ALgetIterator(al);
+    Comparator* comp;
+    comp=getComparatorAL(compare,al);
+    sortAsc(comp);
 
 
-   while(hasNext(i1)){
- 	printf("%s ",((struct Student*)getNext(i1))->name);
-   }
- */
+    printf("after sorting.. \n");
+    Iterator* i1;
+    i1=ALgetIterator(al);
+
+
+    while(hasNext(i1)){
+ 	printf("%s \n",((struct Student*)getNext(i1))->name);
+    }
+*/
 
 
 
@@ -168,8 +148,9 @@ int main(){
 
 
 //Demo of using Linked List and Comparator for Sorting
+
 /*
-   printf("\nsample usages of Linkedlist and sorting using comparator\n");
+   printf("\nSample usages of Linkedlist and sorting using comparator\n");
    LinkedList *list1;
    list1=linkedlist();
    LLadd(list1,&b);
@@ -186,9 +167,8 @@ int main(){
    printf("after sorting.. \n");
    while(hasNext(i1)){
 	  printf("%s ",((struct Student*)getNext(i1))->name);
-}
+   }
 */
-
 
 //Demo of using Priority Queue
 
@@ -211,7 +191,7 @@ int main(){
 	while(hasNext(i)){
 		printf("%s \n",((struct Student*)getNext(i))->name);
 	}
-/*
+*/
 
 //Demo of using ArrayList again
 	
@@ -286,4 +266,5 @@ int main(){
 return 1;
 
 }
+
 

@@ -24,35 +24,39 @@ typedef struct iter_{
 }
 Iterator;
 
-Iterator* LLgetIterator(LinkedList* list){
-	Iterator* i;
-	i=(Iterator*) malloc(sizeof(Iterator));
-	i->head=list->head;
-	i->ptr=list->head;
-	i->index=0;
-	i->type=0;
-	i->llist=list;
-	return i;
-
+Iterator* baseIterator(int listType){
+ 	Iterator* i;
+ 	i=(Iterator*) malloc(sizeof(Iterator));
+ 	i->index=0;
+    i->type=listType;
+    return i;
 }
+
+Iterator* LLgetIterator(LinkedList* list){
+    Iterator* i;
+    i=baseIterator(0);
+ 	i->head=list->head;
+ 	i->ptr=list->head;
+ 	i->llist=list;
+ 	return i;
+ }
+
 Iterator* ALgetIterator(ArrayList* list){
-	Iterator* i;
-	i=(Iterator*) malloc(sizeof(Iterator));
+    Iterator* i;
+    i=baseIterator(1);
 	i->head=list->index;
 	i->ptr=list->index;
-	i->index=0;
-	i->type=1;
 	i->alist=list;
 	return i;
 
 }
+
+
 Iterator* PQgetIterator(PriorityQueue* list){
-	Iterator* i;
-	i=(Iterator*) malloc(sizeof(Iterator));
+    Iterator* i;
+    i=baseIterator(0);
 	i->head=list->list->head;
 	i->ptr=list->list->head;
-	i->index=0;
-	i->type=0;
 	i->llist=list->list;
 	return i;
 
@@ -67,8 +71,7 @@ int hasNext(Iterator* i){
    }}
 	else if(i->type==1){
 		if(i->index>=i->alist->size){
-			//printf("%d compared %d \n",i->index,i->alist->size);
-			   return 0;
+		   return 0;
 		}
 	}
    return 1;
@@ -77,40 +80,30 @@ void* getNext(Iterator* i){
 
 	Node *curr;
 	void* tobe;
-	if(i->type==0){
-	curr=i->ptr;
-	if(curr==NULL){
-		if(i->index==0){
-			printf("here ");
-		tobe=i->head->data;
-			}
-		else{tobe=NULL;
-		}
-	}
-	else{
-		tobe=i->ptr->data;
-	}
-	i->ptr=(Node*)i->ptr->next;
-    i->index=(i->index)+1;
-	}
-	else if(i->type==1){
-		curr=i->ptr;
-		if(curr==NULL){
-			if(i->index==0){
-				printf("here ");
-			tobe=i->head->data;
-				}
-			else{
-				tobe=NULL;
-			}
-		}
-		else{
-			tobe=i->ptr->data;
-		}
-		i->ptr=&(i->alist->index[(i->index)+1]);
-	    i->index=(i->index)+1;
 
+	curr=i->ptr;
+    if(curr==NULL){
+       if(i->index==0){
+    	  tobe=i->head->data;
+    	  }
+       else{
+          tobe=NULL;
+    	  }
+    	}
+
+	if(i->type==0){
+	   tobe=i->ptr->data;
+	   i->ptr=(Node*)i->ptr->next;
+       i->index=(i->index)+1;
 	}
+
+	else if(i->type==1){
+	   tobe=i->ptr->data;
+	   i->ptr=&(i->alist->index[(i->index)+1]);
+	   i->index=(i->index)+1;
+	}
+
+
 	return tobe;
 }
 

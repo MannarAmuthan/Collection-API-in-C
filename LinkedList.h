@@ -10,11 +10,12 @@
 
 
 typedef struct node{
-void* data;
-void* next;
-void* prev;
-int index;
-}Node;
+    void* data;
+    void* next;
+    void* prev;
+    int index;
+}
+Node;
 
 typedef struct Linkedlist{
 	int size;
@@ -25,12 +26,26 @@ LinkedList;
 
 
 LinkedList* linkedlist();
-void LLadd(LinkedList* list,void* node);
-void* LLgetLast(LinkedList* list);
 Node* init_node(void* node);
-int insert(int pos,LinkedList* list,void* data);
-Node* getObj(LinkedList* list,void* no);
+
+
+//API Functions
+void  llist_add(LinkedList* list,void* newData);
+void* llist_tail(LinkedList* list);
+int   llist_insertAfter(LinkedList* list,void* nextTo,void* newData);
+int   llist_insertFirst(LinkedList* list,void* newData);
+void* llist_get(LinkedList* list,int pos);
+int   llist_indexof(LinkedList* list,void* data);
+
+
+//Util functions for inside usage
+Node* LLgetObj(LinkedList* list,void* data);
+Node* LLremove(LinkedList* list,int pos);
 Node* LLget(LinkedList* list,int pos);
+void  LLaddNode(LinkedList* list,Node* newNode);
+
+
+
 
 LinkedList* linkedlist(){
 	LinkedList* list;
@@ -41,38 +56,42 @@ LinkedList* linkedlist(){
 	return list;
 }
 
-void LLadd(LinkedList* list,void* data){
 
-    Node *head,*node;
-    head=list->head;
-    node=init_node(data);
-
-    if(head==NULL){
-    	list->head=node;
-    }
-    else{
-    Node* lastEle;
-    lastEle=LLgetLast(list);
-    lastEle->next=node;
-    }
-    list->size=(list->size)+1;
-
+Node* init_node(void* data){
+    Node* n;
+    n=(Node*)malloc(sizeof(Node));
+    n->data=(void*)(data);
+    n->next=NULL;
+    n->prev=NULL;
+    return n;
 }
-int insertAfter(void* no,LinkedList* list,void* data){
-   Node *curr,*new;
-   curr=getObj(list,no);
+
+
+
+void llist_add(LinkedList* list,void* newData){
+    Node *newNode;
+    newNode=init_node(newData);
+    LLaddNode(list,newNode);
+}
+
+
+int llist_insertAfter(LinkedList* list,void* nextTo,void* newData){
+   Node *curr,*newNode;
+   curr=LLgetObj(list,nextTo);
    if(curr==NULL){
 	   return 0;
    }
-   new=init_node(data);
-   new->next=curr->next;
-   curr->next=new;
+   newNode=init_node(newData);
+   newNode->next=curr->next;
+   curr->next=newNode;
    list->size=(list->size)+1;
    return 1;
 }
-int insertFirst(LinkedList* list,void* data){
+
+
+int llist_insertFirst(LinkedList* list,void* newData){
 	Node *head,*node;
-	node=init_node(data);
+	node=init_node(newData);
 	head=list->head;
 	if(head==NULL){
 		list->head=node;
@@ -80,23 +99,11 @@ int insertFirst(LinkedList* list,void* data){
 	}
 	node->next=head;
 	list->head=node;
-	 list->size=(list->size)+1;
+	list->size=(list->size)+1;
 	return 1;
 }
 
-Node* getObj(LinkedList* list,void* no){
-	Node* head;
-	head=list->head;
-	while(head!=NULL){
-		if(head->data==no){
-			return head;
-		}
-		head=head->next;
-	}
-	return NULL;
-}
-
-void* LLgetLast(LinkedList* list){
+void* llist_tail(LinkedList* list){
 	Node* temp;
 	temp=(Node*)list->head;
 
@@ -108,13 +115,72 @@ void* LLgetLast(LinkedList* list){
 	}
 	return NULL;
 }
+
+void* llist_get(LinkedList* list,int pos){
+	Node* temp;
+	temp=(Node*)list->head;
+    int i=0;
+			while(temp!=NULL){
+				if(i==pos){
+				return temp->data;
+				}
+				temp=temp->next;
+				i++;
+			}
+    return NULL;
+}
+
+int llist_indexof(LinkedList* list,void* data){
+	Node *curr,*n;
+	n=LLgetObj(list,data);
+	curr=list->head;
+	int i=0;
+	while(1){
+		if(curr==n){
+			return i;
+		}
+		curr=curr->next;
+		if(curr==NULL){
+			return -1;
+		}
+		i++;
+	}
+	return i;
+}
+
+void LLaddNode(LinkedList* list,Node* newNode){
+    Node *head;
+    head=list->head;
+    if(head==NULL){
+    	list->head=newNode;
+    }
+    else{
+    Node* lastEle;
+    lastEle=LLget(list,list->size-1);
+    lastEle->next=newNode;
+    }
+    list->size=(list->size)+1;
+}
+
+Node* LLgetObj(LinkedList* list,void* data){
+	Node* head;
+	head=list->head;
+	while(head!=NULL){
+		if(head->data==data){
+			return head;
+		}
+		head=head->next;
+	}
+	return NULL;
+}
+
+
 Node* LLget(LinkedList* list,int pos){
 	Node* temp;
 	temp=(Node*)list->head;
     int i=0;
 			while(temp!=NULL){
 				if(i==pos){
-				//printf("returns %d \n",*(int*)(temp->data));
 				return temp;
 				}
 				temp=temp->next;
@@ -122,6 +188,8 @@ Node* LLget(LinkedList* list,int pos){
 			}
     return NULL;
 }
+
+
 
 Node* LLremove(LinkedList* list,int pos){
 	Node *temp,*prev;
@@ -137,7 +205,6 @@ Node* LLremove(LinkedList* list,int pos){
 			while(1){
 				temp=temp->next;
 				if(i==list->size-1&&i==pos){
-					//printf("here for %d %d \n",pos,list->size);
                   prev->next=NULL;
                   break;
 				}
@@ -158,44 +225,9 @@ Node* LLremove(LinkedList* list,int pos){
     return NULL;
 }
 
-int LLindexOf(LinkedList* list,Node* n){
-	Node* curr;
-	curr=list->head;
-	int i=0;
-	while(1){
-		if(curr==n){
-			return i;
-		}
-		curr=curr->next;
-		if(curr==NULL){
-			return -1;
-		}
-		i++;
-	}
-	return i;
-}
 
 
 
-Node* init_node(void* data){
-    Node* n;
-    n=(Node*)malloc(sizeof(Node));
-    n->data=(void*)(data);
-    n->next=NULL;
-    n->prev=NULL;
-    return n;
-}
-void LLaddNode(LinkedList* list,Node* node){
-    Node *head;
-    head=list->head;
-    if(head==NULL){
-    	list->head=node;
-    }
-    else{
-    Node* lastEle;
-    lastEle=LLgetLast(list);
-    lastEle->next=node;
-    }
-    list->size=(list->size)+1;
-}
+
+
 #endif 
