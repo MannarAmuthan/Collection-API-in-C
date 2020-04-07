@@ -1,9 +1,6 @@
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
-#include "Student.h"
-#include "LinkedList.h"
-#include "ArrayList.h"
 //#include "Iterable.h"
 //#include "Stack.h"
 //#include "DynamicList.h"
@@ -13,22 +10,14 @@
 //#include "Set.h"
 #include "TestLinkedList.c"
 #include "TestArrayList.c"
+#include "TestStack.c"
 
 int main(){
-
-	struct Student a,b,c,d,e,f;
-	strcpy(a.name,"student 1");
-	strcpy(b.name,"student 2");
-	strcpy(c.name,"student 3");
-	strcpy(d.name,"student 4");
-	strcpy(e.name,"student 5");
-	strcpy(f.name,"student 6");
-	a.roll=10;b.roll=20;c.roll=30;d.roll=40;e.roll=50;f.roll=60;
-
 
 //You can find how to use this library by looking test codes.
     testLinkedList();
     testArrayList();
+    testStack();
 
 
 

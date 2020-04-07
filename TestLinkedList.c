@@ -1,4 +1,7 @@
+
 #include "LinkedList.h"
+//dataset class
+#include "Student.h"
 
 void testLinkedList(){
     int isAllTestsPassed=1;

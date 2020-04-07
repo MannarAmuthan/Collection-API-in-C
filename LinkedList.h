@@ -37,7 +37,7 @@ int   llist_insertFirst(LinkedList* list,void* newData);
 void* llist_get(LinkedList* list,int pos);
 int   llist_indexof(LinkedList* list,void* data);
 int   llist_size(LinkedList* list);
-void llist_removeAt(LinkedList* list,int pos);
+void  llist_removeAt(LinkedList* list,int pos);
 
 
 //Util functions for inside usage

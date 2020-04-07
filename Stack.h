@@ -16,45 +16,56 @@ typedef struct _stack{
 }
 Stack;
 
+//API Functions
+int   push(Stack* stk,void* newData);
+void* peek(Stack* stk);
+void* pop(Stack* stk);
+int   stack_size(Stack* stk);
+
+
 Stack* stack(){
-       Stack* st;
-       st=(Stack*)malloc(sizeof(Stack));
-       st->top=NULL;
-       st->size=0;
-       return st;
+       Stack* stk;
+       stk=(Stack*)malloc(sizeof(Stack));
+       stk->top=NULL;
+       stk->size=0;
+       return stk;
 }
 
-int push(Stack* stack,void* data){
+int push(Stack* stk,void* newData){
 	Node* node;
-	node=init_node(data);
+	node=init_node(newData);
 
-	if(stack->top==NULL){
-		stack->top=node;
-		stack->size=(stack->size)+1;
+	if(stk->top==NULL){
+		stk->top=node;
+		stk->size=(stk->size)+1;
 	}
 	else{
-		node->prev=stack->top;
-		stack->top=node;
-        stack->size=(stack->size)+1;
+		node->prev=stk->top;
+		stk->top=node;
+        stk->size=(stk->size)+1;
 	}
 	return 1;
 }
 
-void* peek(Stack* st){
+void* peek(Stack* stk){
 	Node* top;
-	top=st->top;
+	top=stk->top;
 	return top->data;
 }
 
-void* pop(Stack* st){
+void* pop(Stack* stk){
 	Node *top;
-	top=st->top;
+	top=stk->top;
 	if(top==NULL){
 	return NULL;
 	}
-	st->top=st->top->prev;
-    st->size=(st->size)-1;
+	stk->top=stk->top->prev;
+    stk->size=(stk->size)-1;
 	return top->data;
+}
+
+int stack_size(Stack* stk){
+     return stk->size;
 }
 
 #endif /* STACK_H_ */
