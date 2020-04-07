@@ -25,33 +25,12 @@ int main(){
 	strcpy(f.name,"student 6");
 	a.roll=10;b.roll=20;c.roll=30;d.roll=40;e.roll=50;f.roll=60;
 
+
+//You can find how to use this library by looking test codes.
     testLinkedList();
     testArrayList();
 
-//Demo of using Linked List
-/*
-    printf("\nSample usages of Linkedlist \n");
-	LinkedList *list;
-	list=linkedlist();
-	LLadd(list,&a);
-	LLadd(list,&b);
-	LLadd(list,&c);
-	LLadd(list,&d);
-	LLadd(list,&e);
-	LLadd(list,&f);
-	insertAfter(&a,list,&f);
-	insertFirst(list,&c);
-    LLremove(list,6);
-    LLremove(list,3);
-    Iterator* i;
-    i=LLgetIterator(list);
 
-
-    while(hasNext(i)){
-    	printf("%s \n",((struct Student*)getNext(i))->name);
-    }
-
-*/
 
 
 
