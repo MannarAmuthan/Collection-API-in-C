@@ -7,22 +7,22 @@
 void testArrayList(){
      int isAllTestsPassed=1;
 
-     if(shouldCreateArrayList()==0){
+     if(CreateArrayList()==0){
         isAllTestsPassed=0;
         printf("TestFailed : ArrayList Creation \n");
      }
 
-     if(shouldAddAndGetAL()==0){
+     if(AddAndGetInArrayList()==0){
         isAllTestsPassed=0;
         printf("TestFailed : ArrayList Add and Get \n");
      }
 
-     if(shouldInsertAL()==0){
+     if(InsertInArrayList()==0){
         isAllTestsPassed=0;
         printf("TestFailed : ArrayList Insert \n");
      }
 
-     if(shouldRemoveAL()==0){
+     if(RemoveInArrayList()==0){
         isAllTestsPassed=0;
         printf("TestFailed : ArrayList Remove \n");
      }
@@ -34,7 +34,7 @@ void testArrayList(){
  }
 
 
- int shouldCreateArrayList(){
+ int CreateArrayList(){
      ArrayList* list;
      list=arrayList();
      if(list==NULL){
@@ -43,7 +43,7 @@ void testArrayList(){
      return 1;
  }
 
- int shouldAddAndGetAL(){
+ int AddAndGetInArrayList(){
      ArrayList* list;
      list=arrayList();
      struct Student a,b;
@@ -64,7 +64,7 @@ void testArrayList(){
      return 0;
  }
 
- int shouldInsertAL(){
+ int InsertInArrayList(){
      ArrayList* list;
      list=arrayList();
      struct Student a,b,c;
@@ -89,7 +89,7 @@ void testArrayList(){
 
  }
 
- int shouldRemoveAL(){
+ int RemoveInArrayList(){
       ArrayList* list;
       list=arrayList();
       struct Student a,b,c;

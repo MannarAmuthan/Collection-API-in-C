@@ -6,33 +6,33 @@
 void testLinkedList(){
     int isAllTestsPassed=1;
 
-     if(shouldCreateLinkedList()==0){
+     if(CreateLinkedList()==0){
         isAllTestsPassed=0;
         printf("TestFailed : LinkedList Creation \n");
      }
 
-     if(shouldAddAndGetElementLL()==0){
+     if(AddAndGetInLinkedList()==0){
         isAllTestsPassed=0;
         printf("TestFailed : LinkedList Adding and Getting \n");
      }
 
 
-     if(shouldInsertAndGetLL()==0){
+     if(InsertAndGetInLinkedList()==0){
         isAllTestsPassed=0;
         printf("TestFailed : LinkedList Inserting and Getting \n");
      }
 
-     if(shouldGetIndexOfLL()==0){
+     if(GetIndexOfElementInLinkedList()==0){
         isAllTestsPassed=0;
         printf("TestFailed : LinkedList Getting index of element \n");
      }
 
-     if(shouldGetSizeLL()==0){
+     if(GetSizeOfLinkedList()==0){
         isAllTestsPassed=0;
         printf("TestFailed : LinkedList Getting size \n");
      }
 
-     if(shouldRemoveAtLL()==0){
+     if(RemoveInLinkedList()==0){
         isAllTestsPassed=0;
         printf("TestFailed : LinkedList Remove at position \n");
      }
@@ -42,7 +42,7 @@ void testLinkedList(){
      }
  }
 
-int shouldCreateLinkedList(){
+int CreateLinkedList(){
     LinkedList *list;
 	list=linkedlist();
 	if(list!=NULL){
@@ -51,7 +51,7 @@ int shouldCreateLinkedList(){
 	return 0;
 }
 
-int shouldAddAndGetElementLL(){
+int AddAndGetInLinkedList(){
     struct Student a,b;
     strcpy(a.name,"student 1");
     strcpy(b.name,"student 2");
@@ -67,12 +67,12 @@ int shouldAddAndGetElementLL(){
     b1=(struct Student*)llist_get(list,1);
 
     if(compare(&a,a1)==0&&compare(&b,b1)==0){
-    return 1;
+        return 1;
     }
     return 0;
 }
 
-int shouldInsertAndGetLL(){
+int InsertAndGetInLinkedList(){
     struct Student a,b,c,d,e,f;
     strcpy(a.name,"student 1");
     strcpy(b.name,"student 2");
@@ -97,7 +97,7 @@ int shouldInsertAndGetLL(){
     return 0;
 }
 
-int shouldGetIndexOfLL(){
+int GetIndexOfElementInLinkedList(){
     struct Student a,b,c,d,e,f;
     strcpy(a.name,"student 1");
     strcpy(b.name,"student 2");
@@ -120,7 +120,7 @@ int shouldGetIndexOfLL(){
 }
 
 
-int shouldGetSizeLL(){
+int GetSizeOfLinkedList(){
     struct Student a,b,c,d,e,f;
     strcpy(a.name,"student 1");
     strcpy(b.name,"student 2");
@@ -148,7 +148,7 @@ int shouldGetSizeLL(){
 
 }
 
-int shouldRemoveAtLL(){
+int RemoveInLinkedList(){
     struct Student a,b,c,d,e,f;
     strcpy(a.name,"student 1");
     strcpy(b.name,"student 2");

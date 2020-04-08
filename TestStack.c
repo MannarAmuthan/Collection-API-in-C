@@ -4,27 +4,27 @@
 void testStack(){
      int isAllTestsPassed=1;
 
-     if(shouldCreateStack()==0){
+     if(CreateStack()==0){
               isAllTestsPassed=0;
               printf("TestFailed : Stack Creation \n");
      }
 
-     if(shouldPush()==0){
+     if(PushInStack()==0){
               isAllTestsPassed=0;
               printf("TestFailed : Stack Push \n");
      }
 
-     if(shouldPop()==0){
+     if(PopInStack()==0){
               isAllTestsPassed=0;
               printf("TestFailed : Stack Pop \n");
      }
 
-     if(shouldPeek()==0){
+     if(PeekInStack()==0){
               isAllTestsPassed=0;
               printf("TestFailed : Stack Peek \n");
      }
 
-     if(shouldGetSizeStack()==0){
+     if(GetSizeOfStack()==0){
               isAllTestsPassed=0;
               printf("TestFailed : Stack get Size \n");
      }
@@ -35,7 +35,7 @@ void testStack(){
  }
 
 
-int shouldCreateStack(){
+int CreateStack(){
      Stack* stk;
      stk=stack();
      if(stk==NULL){
@@ -44,7 +44,7 @@ int shouldCreateStack(){
      return 1;
 }
 
-int shouldPush(){
+int PushInStack(){
       Stack* stk;
       stk=stack();
 
@@ -65,7 +65,7 @@ int shouldPush(){
 }
 
 
-int shouldPop(){
+int PopInStack(){
        Stack* stk;
        stk=stack();
 
@@ -89,7 +89,7 @@ int shouldPop(){
 }
 
 
-int shouldPeek(){
+int PeekInStack(){
        Stack* stk;
        stk=stack();
 
@@ -113,7 +113,7 @@ int shouldPeek(){
   }
 
 
-int shouldGetSizeStack(){
+int GetSizeOfStack(){
        Stack* stk;
        stk=stack();
 

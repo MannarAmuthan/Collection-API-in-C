@@ -8,65 +8,87 @@
 #ifndef COMPARATOR_H_
 #define COMPARATOR_H_
 
-#include "Iterable.h"
+#include "LinkedList.h"
+#include "ArrayList.h"
+
 
 typedef struct comp_{
-	int (*compareTo)(void* op1,void* op2);
-	ArrayList* alist;
-	LinkedList* llist;
-	int type;
-}Comparator;
+	int  (*compareTo)      (void* op1,void* op2);
+	int  (*isEqual)        (struct comp_* c,void* op1,void* op2);
+	void (*sortAscending)  (struct comp_* c,void* list);
+	void (*sortDescending) (struct comp_* c,void* list);
+}
+Comparator;
 
+void llist_sortAscending(Comparator*  c,LinkedList* list);
+void llist_sortDescending(Comparator* c,LinkedList* list);
+void alist_sortAscending(Comparator*  c,ArrayList* list);
+void alist_sortDescending(Comparator* c,ArrayList* list);
 
-void sortDesc(Comparator* c);
-void sortAsc(Comparator* c);
-void bubbleSort(Comparator* comp,int mode);
-void insertionSort(Comparator* comp,int mode);
+void bubbleSort(LinkedList* list,Comparator* comp,int mode);
+void insertionSort(ArrayList *list,Comparator* comp,int mode);
 void swap(Node *a, Node *b);
+int isEqual(Comparator* c,void* op1,void* op2);
 
-Comparator* getComparatorLL(int (*compareTo)(void* op1,void* op2), LinkedList* list){
+
+Comparator* init_comparator(int (*compareTo)(void* op1,void* op2)){
     Comparator* comp;
     comp=(Comparator*) malloc(sizeof(Comparator));
     comp->compareTo=compareTo;
-    comp->llist=list;
-    comp->type=0;
-    return comp;
-}
-Comparator* getComparatorAL(int (*compareTo)(void* op1,void* op2), ArrayList* list){
-    Comparator* comp;
-    comp=(Comparator*) malloc(sizeof(Comparator));
-    comp->compareTo=compareTo;
-    comp->alist=list;
-    comp->type=1;
+    comp->isEqual=isEqual;
     return comp;
 }
 
-void sortDesc(Comparator* c){
-	if(c->type==0){
-		bubbleSort(c,1);
-	}
-	else if(c->type==1){
-		insertionSort(c,1);
-	}
+Comparator* llist_comparator(int (*compareTo)(void* op1,void* op2)){
+    Comparator* comp;
+    comp=init_comparator(compareTo);
+    comp->sortAscending=llist_sortAscending;
+    comp->sortDescending=llist_sortDescending;
+    return comp;
 }
-void sortAsc(Comparator* c){
-	if(c->type==0){
-		bubbleSort(c,-1);
-	}
-	else if(c->type==1){
-		insertionSort(c,-1);
-	}
+
+Comparator* alist_comparator(int (*compareTo)(void* op1,void* op2)){
+    Comparator* comp;
+    comp=init_comparator(compareTo);
+    comp->sortAscending=alist_sortAscending;
+    comp->sortDescending=alist_sortDescending;
+    return comp;
 }
-void bubbleSort(Comparator* comp,int mode)
+
+int isEqual(Comparator* c,void* op1,void* op2){
+     if(c->compareTo(op1,op2)==0){
+        return 1;
+     }
+     return 0;
+}
+
+void llist_sortAscending(Comparator* c,LinkedList* list){
+     bubbleSort(list,c,-1);
+}
+
+void llist_sortDescending(Comparator* c,LinkedList* list){
+     bubbleSort(list,c,1);
+}
+
+void alist_sortAscending(Comparator* c,ArrayList* list){
+     insertionSort(list,c,-1);
+}
+
+void alist_sortDescending(Comparator* c,ArrayList* list){
+     insertionSort(list,c,1);
+}
+
+//Mode represents sorting order, -1 for ascending order, and 1 for descending order.
+
+void bubbleSort(LinkedList* list,Comparator* comp,int mode)
 {
     int swapped;
     Node *ptr1;
-    Node *lptr = NULL;
+    Node *lptr;
+    lptr=NULL;
     Node *start;
-    LinkedList* list;list=comp->llist;
     start=list->head;
 
-    /* Checking for empty list */
     if (start == NULL)
         return;
 
@@ -89,9 +111,7 @@ void bubbleSort(Comparator* comp,int mode)
     while (swapped);
 }
 
-void insertionSort(Comparator* comp,int mode){
-	ArrayList *list;
-	list=comp->alist;
+void insertionSort(ArrayList *list,Comparator* comp,int mode){
 	int size=list->size;
     for(int i=0;i<size-1;i++){
      for(int j=i+1;j<size;j++){

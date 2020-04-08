@@ -11,6 +11,7 @@
 #include "TestLinkedList.c"
 #include "TestArrayList.c"
 #include "TestStack.c"
+#include "TestComparator.c"
 
 int main(){
 
@@ -18,30 +19,7 @@ int main(){
     testLinkedList();
     testArrayList();
     testStack();
-
-
-
-
-
-//Demo of using Stack
-
-/*
-    printf("\nSample usages of Stack \n");
-	Stack *st;
-	st=stack();
-	push(st,&a);
-	push(st,&b);
-	push(st,&c);
-	push(st,&d);
-	push(st,&e);
-	push(st,&f);
-	printf("%d \n",st->size);
-	struct Student *data;
-	pop(st);
-	data=(struct Student*)pop(st);
-    printf("%s %d \n",data->name,st->size);
-*/
-
+    testComparator();
 
 
 	
