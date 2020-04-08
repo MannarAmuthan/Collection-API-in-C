@@ -9,75 +9,88 @@
 #define ITERABLE_H_
 
 #include "LinkedList.h"
-#include "DynamicList.h"
-#include "PriorityQueue.h"
+#include "ArrayList.h"
 
 
-typedef struct iter_{
+typedef struct llist_iter{
+    LinkedList* llist;
+}
+LinkedListIterator;
+
+typedef struct alist_iter{
+    ArrayList* alist;
+}
+ArrayListIterator;
+
+typedef struct _iter{
+    void* listIterator;
     Node* head;
     Node* ptr;
-    int index;
-    int type;
-    ArrayList* alist;
-    LinkedList* llist;
-    int listSize;
+    int   index;
+    int   (*hasNext)(struct _iter* i);
+    void* (*getNext)(struct _iter* i);
 }
 Iterator;
 
-Iterator* baseIterator(int listType){
- 	Iterator* i;
- 	i=(Iterator*) malloc(sizeof(Iterator));
- 	i->index=0;
-    i->type=listType;
-    return i;
-}
+int     llist_hasnext(Iterator* i);
+int     alist_hasnext(Iterator* i);
+void*   alist_getnext(Iterator* i);
+void*   llist_getnext(Iterator* i);
 
-Iterator* LLgetIterator(LinkedList* list){
+Iterator* iterator_llist(LinkedList* list){
+    LinkedListIterator* ll_iterator;
+    ll_iterator=(LinkedListIterator*) malloc(sizeof(LinkedListIterator));
+    ll_iterator->llist=list;
+
     Iterator* i;
-    i=baseIterator(0);
- 	i->head=list->head;
- 	i->ptr=list->head;
- 	i->llist=list;
+    i=(Iterator*) malloc(sizeof(Iterator));
+    i->head=list->head;
+    i->ptr=list->head;
+ 	i->hasNext=llist_hasnext;
+ 	i->listIterator=ll_iterator;
+ 	i->getNext=llist_getnext;
+ 	i->index=0;
  	return i;
  }
 
-Iterator* ALgetIterator(ArrayList* list){
-    Iterator* i;
-    i=baseIterator(1);
-	i->head=list->index;
-	i->ptr=list->index;
-	i->alist=list;
-	return i;
+Iterator* iterator_alist(ArrayList* list){
+    ArrayListIterator* al_iterator;
+    al_iterator=(ArrayListIterator*) malloc(sizeof(ArrayListIterator));
+    al_iterator->alist=list;
 
+    Iterator* i;
+    i=(Iterator*) malloc(sizeof(Iterator));
+    i->head=list->index;
+    i->ptr=list->index;
+ 	i->hasNext=alist_hasnext;
+ 	i->listIterator=al_iterator;
+ 	i->getNext=alist_getnext;
+ 	i->index=0;
+ 	return i;
 }
 
 
-Iterator* PQgetIterator(PriorityQueue* list){
-    Iterator* i;
-    i=baseIterator(0);
-	i->head=list->list->head;
-	i->ptr=list->list->head;
-	i->llist=list->list;
-	return i;
 
-}
-int hasNext(Iterator* i){
-	if(i->type==0){
+int llist_hasnext(Iterator* i){
       if(i->ptr==NULL){
 	   if((i->index)==0){
 		   return 1;
 	   }
-	   return 0;
-   }}
-	else if(i->type==1){
-		if(i->index>=i->alist->size){
+	       return 0;
+	   }
+	return 1;
+}
+
+int alist_hasnext(Iterator* i){
+        ArrayListIterator* a_iter;
+        a_iter=(ArrayListIterator*) i->listIterator;
+		if(i->index>=a_iter->alist->size){
 		   return 0;
 		}
-	}
-   return 1;
+    return 1;
 }
-void* getNext(Iterator* i){
 
+void* llist_getnext(Iterator* i){
 	Node *curr;
 	void* tobe;
 
@@ -85,26 +98,36 @@ void* getNext(Iterator* i){
     if(curr==NULL){
        if(i->index==0){
     	  tobe=i->head->data;
-    	  }
+       }
        else{
           tobe=NULL;
-    	  }
-    	}
+       }
+    }
+	tobe=i->ptr->data;
+	i->ptr=(Node*)i->ptr->next;
+    i->index=(i->index)+1;
+    return tobe;
+}
 
-	if(i->type==0){
-	   tobe=i->ptr->data;
-	   i->ptr=(Node*)i->ptr->next;
-       i->index=(i->index)+1;
-	}
+void* alist_getnext(Iterator* i){
+	Node *curr;
+	void* tobe;
 
-	else if(i->type==1){
-	   tobe=i->ptr->data;
-	   i->ptr=&(i->alist->index[(i->index)+1]);
-	   i->index=(i->index)+1;
-	}
-
-
-	return tobe;
+	curr=i->ptr;
+    if(curr==NULL){
+       if(i->index==0){
+    	  tobe=i->head->data;
+       }
+       else{
+          tobe=NULL;
+       }
+    }
+    ArrayListIterator* a_iter;
+    a_iter=(ArrayListIterator*) i->listIterator;
+	tobe=i->ptr->data;
+	i->ptr=&(a_iter->alist->index[(i->index)+1]);
+	i->index=(i->index)+1;
+    return tobe;
 }
 
 #endif /* ITERABLE_H_ */

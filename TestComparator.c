@@ -150,7 +150,7 @@ int SortArrayListInAscendingOrder(){
      a.roll=10;b.roll=20;c.roll=30;d.roll=40;
 
      ArrayList *list;
-     list=arrayList();
+     list=arraylist();
      alist_add(list,&b);
      alist_add(list,&a);
      alist_insert(list,&c,1);
@@ -177,7 +177,7 @@ int SortArrayListInDescendingOrder(){
     a.roll=10;b.roll=20;c.roll=30;d.roll=40;
 
     ArrayList *list;
-    list=arrayList();
+    list=arraylist();
     alist_add(list,&b);
     alist_add(list,&a);
     alist_insert(list,&c,1);

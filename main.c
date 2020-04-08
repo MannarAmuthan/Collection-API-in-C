@@ -12,6 +12,7 @@
 #include "TestArrayList.c"
 #include "TestStack.c"
 #include "TestComparator.c"
+#include "TestIterator.c"
 
 int main(){
 
@@ -20,6 +21,7 @@ int main(){
     testArrayList();
     testStack();
     testComparator();
+    testIterator();
 
 
 	

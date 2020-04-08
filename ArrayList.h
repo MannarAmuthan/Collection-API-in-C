@@ -17,7 +17,7 @@ typedef struct dynamlist{
 	int capacity;
 } ArrayList;
 
-ArrayList* arrayList();
+ArrayList* arraylist();
 
 int    alist_add(ArrayList* list, void* newData);
 void*  alist_get(ArrayList* list,int pos);
@@ -25,7 +25,7 @@ int    alist_remove(ArrayList* list,int pos);
 int    alist_insert(ArrayList* list,void* newData,int pos);
 
 
-ArrayList* arrayList(){
+ArrayList* arraylist(){
 	ArrayList* list;
     list=(ArrayList*) malloc(sizeof(ArrayList));
     list->index=(Node*)malloc(sizeof(Node)*10);

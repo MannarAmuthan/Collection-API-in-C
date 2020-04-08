@@ -36,7 +36,7 @@ void testArrayList(){
 
  int CreateArrayList(){
      ArrayList* list;
-     list=arrayList();
+     list=arraylist();
      if(list==NULL){
         return 0;
      }
@@ -45,7 +45,7 @@ void testArrayList(){
 
  int AddAndGetInArrayList(){
      ArrayList* list;
-     list=arrayList();
+     list=arraylist();
      struct Student a,b;
      strcpy(a.name,"student 1");
      strcpy(b.name,"student 2");
@@ -66,7 +66,7 @@ void testArrayList(){
 
  int InsertInArrayList(){
      ArrayList* list;
-     list=arrayList();
+     list=arraylist();
      struct Student a,b,c;
      strcpy(a.name,"student 1");
      strcpy(b.name,"student 2");
@@ -91,7 +91,7 @@ void testArrayList(){
 
  int RemoveInArrayList(){
       ArrayList* list;
-      list=arrayList();
+      list=arraylist();
       struct Student a,b,c;
       strcpy(a.name,"student 1");
       strcpy(b.name,"student 2");
