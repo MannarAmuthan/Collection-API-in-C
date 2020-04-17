@@ -4,7 +4,7 @@
 //#include "Iterable.h"
 //#include "Stack.h"
 //#include "DynamicList.h"
-//#include "HashMap.h"
+#include "HashMap.h"
 //#include "Comparator.h"
 //#include "PriorityQueue.h"
 //#include "Set.h"
@@ -13,6 +13,7 @@
 #include "TestStack.c"
 #include "TestComparator.c"
 #include "TestIterator.c"
+#include "TestHashMap.c"
 
 int main(){
 
@@ -22,57 +23,11 @@ int main(){
     testStack();
     testComparator();
     testIterator();
+    testHashMap();
+
 
 
 	
-//Demo of using ArrayList and Comparator for sorting
-/*
-    printf("\nSample usages of Arraylist and sorting using Comparator\n");
-    ArrayList* al;
-    al=arrayList();
-
-    addAL(al,&a);
-    addAL(al,&b);
-    addAL(al,&c);
-    addAL(al,&d);
-    addAL(al,&e);
-    addAL(al,&f);
-    addAL(al,&a);
-    addAL(al,&e);
-    addAL(al,&f);
-    addAL(al,&a);
-    addAL(al,&b);
-    addAL(al,&b);
-
-    removeAL(al,0);
-    removeAL(al,1);
-    insertAtAL(al,&f,0);
-    insertAtAL(al,&a,11);
-    addAL(al,&e);
-
-    Iterator* i;
-    i=ALgetIterator(al);
-
-
-    while(hasNext(i)){
- 	  printf("%s \n",((struct Student*)getNext(i))->name);
-    }
-
-    Comparator* comp;
-    comp=getComparatorAL(compare,al);
-    sortAsc(comp);
-
-
-    printf("after sorting.. \n");
-    Iterator* i1;
-    i1=ALgetIterator(al);
-
-
-    while(hasNext(i1)){
- 	printf("%s \n",((struct Student*)getNext(i1))->name);
-    }
-*/
-
 
 
 //Demo of using HashMap
