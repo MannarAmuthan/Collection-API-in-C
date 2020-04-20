@@ -1,6 +1,6 @@
 
 #include "LinkedList.h"
-//dataset class
+//data class
 #include "Student.h"
 
 void testLinkedList(){
@@ -66,7 +66,7 @@ int AddAndGetInLinkedList(){
     a1=(struct Student*)llist_get(list,0);
     b1=(struct Student*)llist_get(list,1);
 
-    if(compare(&a,a1)==0&&compare(&b,b1)==0){
+    if(StudentCompare(&a,a1)==0&&StudentCompare(&b,b1)==0){
         return 1;
     }
     return 0;
@@ -91,7 +91,7 @@ int InsertAndGetInLinkedList(){
     a1=(struct Student*)llist_get(list,0);
     b1=(struct Student*)llist_get(list,1);
 
-    if(compare(&c,a1)==0&&compare(&a,b1)==0){
+    if(StudentCompare(&c,a1)==0&&StudentCompare(&a,b1)==0){
        return 1;
     }
     return 0;
@@ -167,7 +167,7 @@ int RemoveInLinkedList(){
     llist_removeAt(list,0);
     a1=(struct Student*) llist_get(list,1);
 
-    if(llist_size(list)==3&&compare(a1,&d)==0){
+    if(llist_size(list)==3&&StudentCompare(a1,&d)==0){
        return 1;
     }
 

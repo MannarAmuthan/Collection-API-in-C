@@ -1,6 +1,6 @@
 
 #include "ArrayList.h"
-//dataset class
+//data class
 #include "Student.h"
 
 
@@ -27,6 +27,10 @@ void testArrayList(){
         printf("TestFailed : ArrayList Remove \n");
      }
 
+     if(SetInArrayList()==0){
+        isAllTestsPassed=0;
+        printf("TestFailed : ArrayList Set \n");
+     }
 
      if(isAllTestsPassed==1){
         printf("TestsPassed : All Tests are passed in ArrayList \n");
@@ -57,7 +61,7 @@ void testArrayList(){
      a1=(struct Student*)alist_get(list,0);
      b1=(struct Student*)alist_get(list,1);
 
-     if(compare(a1,&a)==0&&compare(b1,&b)==0){
+     if(StudentCompare(a1,&a)==0&&StudentCompare(b1,&b)==0){
         return 1;
      }
 
@@ -81,7 +85,7 @@ void testArrayList(){
      b1=(struct Student*)alist_get(list,1);
      c1=(struct Student*)alist_get(list,2);
 
-     if((compare(a1,&a)==0&&compare(b1,&c)==0)&&compare(c1,&b)==0){
+     if((StudentCompare(a1,&a)==0&&StudentCompare(b1,&c)==0)&&StudentCompare(c1,&b)==0){
         return 1;
      }
 
@@ -106,7 +110,7 @@ void testArrayList(){
       a1=(struct Student*)alist_get(list,0);
       b1=(struct Student*)alist_get(list,1);
 
-      if(compare(a1,&c)==0&&compare(b1,&b)==0){
+      if(StudentCompare(a1,&c)==0&&StudentCompare(b1,&b)==0){
          return 1;
       }
 
@@ -114,3 +118,32 @@ void testArrayList(){
 
  }
 
+
+ int SetInArrayList(){
+      ArrayList* list;
+      list=arraylist();
+      struct Student a,b,c,d,e;
+      strcpy(a.name,"student 1");
+      strcpy(b.name,"student 2");
+      strcpy(c.name,"student 3");
+      strcpy(d.name,"student 4");
+      strcpy(e.name,"student 5");
+
+      a.roll=10;b.roll=20,c.roll=30,d.roll=40,e.roll=50;
+      alist_add(list,&a);
+      alist_add(list,&b);
+      alist_add(list,&c);
+      alist_set(list,&d,0);
+      alist_set(list,&e,2);
+
+      struct Student *a1,*b1;
+      a1=(struct Student*)alist_get(list,0);
+      b1=(struct Student*)alist_get(list,2);
+
+      if(StudentCompare(a1,&d)==0&&StudentCompare(b1,&e)==0){
+         return 1;
+      }
+
+      return 0;
+
+ }

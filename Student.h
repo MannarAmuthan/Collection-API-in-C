@@ -7,7 +7,7 @@ struct Student{
 };
 
 //This will be used as comparator
-int compare(void* one,void* two){
+int StudentCompare(void* one,void* two){
 	struct Student *op1,*op2;
 	op1=(struct Student*) one;
 	op2=(struct Student*) two;

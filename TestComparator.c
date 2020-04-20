@@ -1,4 +1,6 @@
 #include "Comparator.h"
+//data class
+#include "Student.h"
 
 
 void testComparator(){
@@ -48,7 +50,7 @@ void testComparator(){
 int GetComparatorForLinkedList(){
     Comparator* comparator;
     //adding Student's comparator method as a comparator
-    comparator=llist_comparator(compare);
+    comparator=llist_comparator(StudentCompare);
     if(comparator!=NULL){
         return 1;
     }
@@ -60,7 +62,7 @@ int GetComparatorForLinkedList(){
 int GetComparatorForArrayList(){
     Comparator* comparator;
     //adding Student's comparator method as a comparator
-    comparator=alist_comparator(compare);
+    comparator=alist_comparator(StudentCompare);
     if(comparator!=NULL){
         return 1;
     }
@@ -77,7 +79,7 @@ int CheckEqualityBetweenTwoElements(){
     a1->roll=10;
 
     Comparator* comparator;
-    comparator=llist_comparator(compare);
+    comparator=llist_comparator(StudentCompare);
     if(comparator->isEqual(comparator,&a,a1)==1){
     return 1;
     }
@@ -101,7 +103,7 @@ int SortLinkedListInAscendingOrder(){
     llist_insertAfter(list,&a,&d);
 
     Comparator* comparator;
-    comparator=llist_comparator(compare);
+    comparator=llist_comparator(StudentCompare);
     comparator->sortAscending(comparator,list);
 
     if(!((llist_indexof(list,&a)==0)&&(llist_indexof(list,&b)==1))){
@@ -129,7 +131,7 @@ int SortLinkedListInDescendingOrder(){
     llist_insertAfter(list,&a,&d);
 
     Comparator* comparator;
-    comparator=llist_comparator(compare);
+    comparator=llist_comparator(StudentCompare);
     comparator->sortDescending(comparator,list);
 
     if(!((llist_indexof(list,&a)==3)&&(llist_indexof(list,&b)==2))){
@@ -157,7 +159,7 @@ int SortArrayListInAscendingOrder(){
      alist_insert(list,&d,1);
 
      Comparator* comparator;
-     comparator=alist_comparator(compare);
+     comparator=alist_comparator(StudentCompare);
      comparator->sortAscending(comparator,list);
 
      for(int i=0;i<list->size-1;i++){
@@ -184,7 +186,7 @@ int SortArrayListInDescendingOrder(){
     alist_insert(list,&d,1);
 
     Comparator* comparator;
-    comparator=alist_comparator(compare);
+    comparator=alist_comparator(StudentCompare);
     comparator->sortDescending(comparator,list);
 
     for(int i=0;i<list->size-1;i++){

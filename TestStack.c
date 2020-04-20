@@ -1,4 +1,6 @@
 #include "Stack.h"
+//data class
+#include "Student.h"
 
 
 void testStack(){
@@ -82,7 +84,7 @@ int PopInStack(){
 
        struct Student *a1;
        a1=(struct Student*)pop(stk);
-       if(stack_size(stk)==2&&compare(a1,&c)==0){
+       if(stack_size(stk)==2&&StudentCompare(a1,&c)==0){
        return 1;
        }
        return 0;
@@ -106,7 +108,7 @@ int PeekInStack(){
 
        struct Student *a1;
        a1=(struct Student*)peek(stk);
-       if(stack_size(stk)==3&&compare(a1,&c)==0){
+       if(stack_size(stk)==3&&StudentCompare(a1,&c)==0){
        return 1;
        }
        return 0;

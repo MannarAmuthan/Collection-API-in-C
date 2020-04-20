@@ -1,4 +1,6 @@
 #include "HashMap.h"
+//dataset class
+#include "Student.h"
 
 
 void testHashMap(){

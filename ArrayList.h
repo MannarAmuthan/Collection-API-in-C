@@ -23,6 +23,7 @@ int    alist_add(ArrayList* list, void* newData);
 void*  alist_get(ArrayList* list,int pos);
 int    alist_remove(ArrayList* list,int pos);
 int    alist_insert(ArrayList* list,void* newData,int pos);
+int    alist_set(ArrayList* list,void* newData,int pos);
 
 
 ArrayList* arraylist(){
@@ -47,6 +48,16 @@ int alist_add(ArrayList* list, void* newData){
 	list->pointer=(list->pointer)+1;
 	list->size=list->size+1;
 	return 1;
+}
+
+int alist_set(ArrayList* list,void* newData,int pos){
+	Node* node;
+	node=init_node(newData);
+	if(pos>-1&&list->size>pos){
+	    *(list->index+pos)=*node;
+	    return 1;
+	}
+	return -1;
 }
 
 void* alist_get(ArrayList* list,int pos){
