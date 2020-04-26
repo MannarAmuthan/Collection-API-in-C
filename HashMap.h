@@ -8,6 +8,8 @@
 #ifndef HASHMAP_H_
 #define HASHMAP_H_
 
+#include<string.h>
+
 #define HASHTABLE_SIZE 65536
 
 typedef enum key_type{
@@ -57,6 +59,7 @@ HashMap* hashmap(KEY_TYPE keyType){
 	HashMap* map;
 	map=(HashMap*) malloc(sizeof(HashMap));
 	map->hashtable=(HashNode *)malloc(sizeof(HashNode)*HASHTABLE_SIZE);
+	memset(map->hashtable,0,sizeof(HashNode)*HASHTABLE_SIZE);
 	map->capacity=HASHTABLE_SIZE;
 	map->keyType=keyType;
 	return map;
@@ -88,12 +91,12 @@ void hashmap_put(HashMap* map,void* keyData,void* data){
    hashNode=init_hashnode(key,data);
    }
    currentNode=&(map->hashtable[hashNode->index]);
-   if(map->booleanTable[hashNode->index]==1){
+     if(map->booleanTable[hashNode->index]==1){
         while(currentNode->chain!=NULL){
             currentNode=currentNode->chain;
         }
         currentNode->chain=hashNode;
-   }
+        }
 
    else{
      map->hashtable[hashNode->index]=*hashNode;
@@ -116,9 +119,24 @@ void* hashmap_get(HashMap* map,void* keyData){
    index=hash_getkey(key);
    }
 
+   HashNode* curr;
+   curr=map->hashtable+index;
+   if(curr->chain!=NULL){
+    if(strcmp(curr->userkey,key)!=0){
+        while(curr->chain!=NULL){
+         curr=curr->chain;
+         if(strcmp(curr->userkey,key)==0){
+           return curr->data;
+         }
+     }
+     return NULL;
+   }
+   }
 
-
+   else{
    return map->hashtable[index].data;
+   }
 }
+
 
 #endif /* HASHMAP_H_ */

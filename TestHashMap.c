@@ -31,7 +31,6 @@ void testHashMap(){
      }
  }
 
-
 int CreateHashMap(){
      HashMap* map;
      map=hashmap(STRING);
@@ -48,10 +47,10 @@ int PutAndGetInHashMapWithIntegerKeys(){
      strcpy(a.name,"student 1");
      strcpy(b.name,"student 2");
      strcpy(c.name,"student 4");
-     strcpy(d.name,"student 4");
+     strcpy(d.name,"student 5");
      a.roll=10;b.roll=20;c.roll=7000,d.roll=6999;
 
-     int keys[]={5677,7654,87,9,1};
+     int keys[]={5677,7654,87,9,1,3};
 
      hashmap_put(map,&keys[0],&a);
      hashmap_put(map,&keys[1],&b);
@@ -60,8 +59,6 @@ int PutAndGetInHashMapWithIntegerKeys(){
      hashmap_put(map,&keys[4],&a);
      hashmap_put(map,&keys[5],&c);
 
-     int keyOne=77;
-     int keyTwo=777;
      e=(struct Student*)hashmap_get(map,&keys[5]);
      f=(struct Student*)hashmap_get(map,&keys[4]);
      g=(struct Student*)hashmap_get(map,&keys[1]);
@@ -80,12 +77,13 @@ int PutAndGetInHashMapWithIntegerKeys(){
 int PutAndGetInHashMapWithStringKeys(){
      HashMap* map;
      map=hashmap(STRING);
-     struct Student a,b,c,d,*e,*f,*g,*h,*i,*j;
+     struct Student a,b,c,d,*e,*f,*g,*h,*i,*j,test,*testP;
      strcpy(a.name,"student 1");
      strcpy(b.name,"student 2");
      strcpy(c.name,"student 4");
      strcpy(d.name,"student 4");
-     a.roll=10;b.roll=20;c.roll=7000,d.roll=6999;
+     strcpy(test.name,"student 4");
+     a.roll=10;b.roll=20;c.roll=7000,d.roll=6999,test.roll=43;
 
      hashmap_put(map,"This is key one",&a);
      hashmap_put(map,"This is key one!",&b);

@@ -9,6 +9,7 @@
 #include "TestIterator.c"
 #include "TestHashMap.c"
 #include "TestPriorityQueue.c"
+#include "TestSet.c"
 
 int main(){
 
@@ -20,6 +21,7 @@ int main(){
     testIterator();
     testHashMap();
     testPriorityQueue();
+    testSet();
 
 
 return 1;
