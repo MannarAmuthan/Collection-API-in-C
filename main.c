@@ -10,10 +10,9 @@
 #include "TestHashMap.c"
 #include "TestPriorityQueue.c"
 #include "TestSet.c"
-
 int main(){
 
-//You can find how to use this library by looking test codes.
+
     testLinkedList();
     testArrayList();
     testStack();

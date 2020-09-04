@@ -1,5 +1,5 @@
 
-#include "LinkedList.h"
+#include "sourcefiles/LinkedList.c"
 //data class
 #include "Student.h"
 
@@ -74,27 +74,27 @@ int AddAndGetInLinkedList(){
 
 int InsertAndGetInLinkedList(){
     struct Student a,b,c,d,e,f;
-    strcpy(a.name,"student 1");
-    strcpy(b.name,"student 2");
-    strcpy(c.name,"student 3");
-    strcpy(d.name,"student 4");
-    a.roll=10;b.roll=20;c.roll=30;d.roll=40;
+                 strcpy(a.name,"student 1");
+                 strcpy(b.name,"student 2");
+                 strcpy(c.name,"student 3");
+                 strcpy(d.name,"student 4");
+                 a.roll=10;b.roll=20;c.roll=30;d.roll=40;
 
-    LinkedList *list;
-    list=linkedlist();
-    llist_add(list,&a);
-    llist_add(list,&b);
-    llist_insertFirst(list,&c);
-    llist_insertAfter(list,&a,&d);
+                 LinkedList *list;
+                 list=linkedlist();
+                 llist_add(list,&a);
+                 llist_add(list,&b);
+                 llist_insertFirst(list,&c);
+                 llist_insertAfter(list,&a,&d);
 
-    struct Student *a1,*b1;
-    a1=(struct Student*)llist_get(list,0);
-    b1=(struct Student*)llist_get(list,1);
+                 struct Student *a1,*b1;
+                 a1=(struct Student*)llist_get(list,0);
+                 b1=(struct Student*)llist_get(list,1);
 
-    if(StudentCompare(&c,a1)==0&&StudentCompare(&a,b1)==0){
-       return 1;
-    }
-    return 0;
+                 if(StudentCompare(&c,a1)==0&&StudentCompare(&a,b1)==0){
+                    return 1;
+                 }
+                 return 0;
 }
 
 int GetIndexOfElementInLinkedList(){

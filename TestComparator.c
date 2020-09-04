@@ -1,4 +1,4 @@
-#include "Comparator.h"
+#include "sourcefiles/Comparator.c"
 //data class
 #include "Student.h"
 
