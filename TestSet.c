@@ -1,4 +1,4 @@
-#include "sourcefiles/Set.c"
+#include "collection.h"
 //dataset class
 #include "Student.h"
 

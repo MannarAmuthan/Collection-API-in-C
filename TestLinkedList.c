@@ -1,5 +1,5 @@
 
-#include "sourcefiles/LinkedList.c"
+#include "collection.h"
 //data class
 #include "Student.h"
 

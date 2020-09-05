@@ -11,8 +11,6 @@
 #include "TestPriorityQueue.c"
 #include "TestSet.c"
 int main(){
-
-
     testLinkedList();
     testArrayList();
     testStack();
@@ -21,10 +19,7 @@ int main(){
     testHashMap();
     testPriorityQueue();
     testSet();
-
-
 return 1;
-
 }
 
 
