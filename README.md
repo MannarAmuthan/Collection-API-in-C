@@ -3,7 +3,7 @@ Implementation of collection in c language
 This is the implementation of JAVA's collections in C language
 It is flexible for using your own data types/objects as data
 
-## Getting Started
+## Getting Started : 
 
 Project contains makefile, so you compile and run the sample program using following steps
 
